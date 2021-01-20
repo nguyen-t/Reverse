@@ -1,5 +1,5 @@
 # Edit to fit needs
-CC = gcc
+CC = clang
 LIBS =
 DEFINES =
 SANS = undefined,address,leak
@@ -52,7 +52,7 @@ clean:
 $(OUTPUT): $(OBJECTS)
 	$(CC) $(LDFLAGS) $@ $^ $(addprefix -l, $(LIBS))
 
-$(OBJDIR)/%$(OBJEXT): $(SRCDIR)/%$(SRCEXT) $(HEADERS)
+$(OBJDIR)/%$(OBJEXT): $(SRCDIR)/%$(SRCEXT)
 	$(CC) $(CFLAGS) $@ $<
 
 $(HDRDIR) $(SRCDIR) $(OBJDIR) $(TSTDIR): % :
